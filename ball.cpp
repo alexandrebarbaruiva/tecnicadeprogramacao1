@@ -42,9 +42,10 @@ void Ball::step(double dt)
   } else {
     vy = -vy ;
   }
-  //std::cout<<"vx = "<<vx<<" - vy = "<<vy<<std::endl ;
 }
 
+//Lembrar de nos próximos exercícios mandar o arquivo
+// antes de fazer as mudanças
 void Ball::setPosition(double newX, double newY)
 {
   x = newX;
