@@ -17,7 +17,8 @@ public:
   void step(double dt) ;
   void display() ;
   void setPosition(double newX, double newY) ;
-  double getPosition();
+  void getPosition();
+  void run(Simulation & s, double dt);
 
 protected:
   // Data members

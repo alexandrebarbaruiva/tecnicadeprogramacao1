@@ -52,7 +52,7 @@ void Ball::setPosition(double newX, double newY)
   y = newY;
 }
 
-double Ball::getPosition()
+void Ball::getPosition()
 {
   std::cout<<"X = "<<x<<" Y = "<<y<<std::endl ;
 }
@@ -60,4 +60,13 @@ double Ball::getPosition()
 void Ball::display()
 {
   std::cout<<x<<" "<<y<<std::endl ;
+}
+
+void Ball::run(Simulation & s, double dt)
+{
+  for (int i = 0 ; i < 100 ; ++i)
+  {
+    s.step(dt);
+    s.display();
+  }
 }
