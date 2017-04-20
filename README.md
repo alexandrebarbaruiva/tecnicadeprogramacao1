@@ -13,6 +13,14 @@ Baixe todo o diretório do projeto, abra o terminal ou equivalente da sua máqui
 ```
 cd /SeuDiretório/SuaPasta/tecnicadeprogramacao1
 ```
+Depois deve-se compilar os códigos test-ball.cpp, ball.cpp e ball.h
+```
+g++ test-ball.cpp ball.cpp ball.h
+```
+E aí executar o arquivo a.out
+```
+./a.out
+```
 
 ## Descrição dos arquivos
 
