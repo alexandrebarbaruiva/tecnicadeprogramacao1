@@ -4,7 +4,7 @@ Este projeto tem por finalidade implementar conhecimentos adquiridos nas aulas d
 
 ## Requisitos
 
-É necessário ter instalado na máquina um compilador de C++, de preferência o gcc.
+É necessário ter instalado na máquina um compilador de C++.
 O sistema operacional pode ser o Linux, Windows ou MacOS.
 
 ## Instalação/Compilação
