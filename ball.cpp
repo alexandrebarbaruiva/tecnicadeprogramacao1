@@ -44,8 +44,6 @@ void Ball::step(double dt)
   }
 }
 
-//Lembrar de nos próximos exercícios mandar o arquivo
-// antes de fazer as mudanças
 void Ball::setPosition(double newX, double newY)
 {
   x = newX;

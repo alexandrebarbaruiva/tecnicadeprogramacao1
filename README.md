@@ -6,18 +6,25 @@ Este projeto tem por finalidade implementar conhecimentos adquiridos nas aulas d
 
 É necessário ter instalado na máquina um compilador de C++.
 O sistema operacional pode ser o Linux, Windows ou MacOS.
+Instalação do compilador:
+- [Windows.](https://cs.calvin.edu/courses/cs/112/resources/installingEclipse/cygwin/)
+- [Mac.](https://www.mkyong.com/mac/how-to-install-gcc-compiler-on-mac-os-x/)
+- [Linux.](https://askubuntu.com/questions/348654/how-to-install-g-compiler)
 
 ## Instalação/Compilação
 
 Baixe todo o diretório do projeto, abra o terminal ou equivalente da sua máquina, acesse o diretório no qual o projeto foi baixado usando
+
 ```
 cd /SeuDiretório/SuaPasta/tecnicadeprogramacao1
 ```
 Depois deve-se compilar os códigos test-ball.cpp, ball.cpp e ball.h
+
 ```
 g++ test-ball.cpp ball.cpp ball.h
 ```
 E aí executar o arquivo a.out
+
 ```
 ./a.out
 ```
@@ -35,7 +42,11 @@ E aí executar o arquivo a.out
 
 O MATLAB é usado para análise visual de dados. A partir da saída do test-ball.cpp foi possível plottar o seguinte gráfico.
 
-![plotBal](plotBall.png)
+![plotBall](plotBall.png)
+
+### Diagrama de Classes
+
+![Diagrama](DiagramaDeClasses.png)
 
 ### Saída
 
@@ -141,3 +152,5 @@ O MATLAB é usado para análise visual de dados. A partir da saída do test-ball
 0.8 -0.119444
 0.79 -0.0737778
 ```
+
+
