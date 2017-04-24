@@ -36,11 +36,11 @@ E aí executar o arquivo a.out
 - simulation.h - interface para a ball
 - test-ball.cpp - arquivo para teste da classe ball
 - ball.txt - saída do arquivo test-ball.cpp
-- plotBall - gráfico gerado pelo MATLAB a partir do ball.txt
+- plotBall.png - gráfico gerado pelo MATLAB a partir do ball.txt
 
 ### Resultado MATLAB
 
-O MATLAB é usado para análise visual de dados. A partir da saída do test-ball.cpp foi possível plottar o seguinte gráfico.
+O MATLAB, usado para análise visual de dados, foi a ferramenta escolhida para processar a informação (ball.txt) gerada pelo programa (test-ball.cpp). A partir da saída do test-ball.cpp foi possível plottar o seguinte gráfico. É possível perceber que há conservação de energia e, caso houvesse uma quantidade maior de repitições, o gráfico mostraria diversas parábolas com a mesma altura máxima.
 
 ![plotBall](plotBall.png)
 
@@ -49,6 +49,8 @@ O MATLAB é usado para análise visual de dados. A partir da saída do test-ball
 ![Diagrama](DiagramaDeClasses.png)
 
 ### Saída
+
+A saída gerada pelo programa test-ball.cpp e salva no arquivo ball.txt é a seguinte:
 
 ```
 0.01 -0.00877778
