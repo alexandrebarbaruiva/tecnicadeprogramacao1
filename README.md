@@ -21,7 +21,7 @@ cd /SeuDiretório/SuaPasta/tecnicadeprogramacao1
 Depois deve-se compilar os códigos test-ball.cpp, ball.cpp e ball.h
 
 ```
-g++ test-ball.cpp ball.cpp ball.h
+g++ test-ball.cpp ball.cpp ball.h simulation.h
 ```
 E aí executar o arquivo a.out
 
