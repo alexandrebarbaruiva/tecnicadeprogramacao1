@@ -58,28 +58,41 @@ double Mass::getMass() const
 
 double Mass::getEnergy(double gravity) const
 {
-  double energy =  (getMass()*((getVelocity().y)*(getVelocity().y))/2)
-                      + (getPosition().x * gravity * getMass());
+  double kineticEnergy = (getMass()*((getVelocity().y)*(getVelocity().y))/2);
+  double potencialEnergy = ((getPosition().y - getRadius()) * gravity * getMass());
+  double energy = kineticEnergy + potencialEnergy;
 
   return energy ;
 }
 
 void Mass::step(double dt)
 {
+  Vector2 acceleration;
+  acceleration.x = 0;
+  acceleration.y = getForce().y/getMass();
+
   Vector2 newPosition;
   newPosition.x = getPosition().x + (getVelocity().x * dt);
-  newPosition.y = getPosition().y + (getVelocity().y * dt) - (0.5 * getForce().y/getMass() * dt * dt);
+  newPosition.y = getPosition().y + (getVelocity().y * dt) - (0.5 * acceleration.y * dt * dt);
+
+  Vector2 newVelocity;
+  newVelocity.x = getVelocity().x;
+  newVelocity.y = getVelocity().y;
 
   if (xmin + getRadius() <= newPosition.x && newPosition.x <= xmax - getRadius()) {
     position.x = newPosition.x;
+    velocity.x = newVelocity.x;
   } else {
     position.x = -newPosition.x;
+    velocity.x = -newVelocity.x;
   }
 
   if (ymin + getRadius() <= newPosition.y && newPosition.y <= ymax - getRadius()) {
     position.y = newPosition.y;
+    velocity.y = newVelocity.y;
   } else {
     position.y = -newPosition.y;
+    velocity.y = -newVelocity.y;
   }
 }
 
@@ -105,8 +118,8 @@ Mass * Spring::getMass2() const
 Vector2 Spring::getForce() const
 {
   Vector2 F ;
-  F.x = - stiffness * abs((mass1.getPosition().x - mass2.getPosition().x)) - damping * abs((mass1.getVelocity().x - mass2.getVelocity().x));
-  F.y = - stiffness * abs((mass1.getPosition().y - mass2.getPosition().y)) - damping * abs((mass1.getVelocity().y - mass2.getVelocity().y));
+  F.x = - stiffness * fabs((mass1->getPosition().x - mass2->getPosition().x)) - damping * fabs((mass1->getVelocity().x - mass2->getVelocity().x));
+  F.y = - stiffness * fabs((mass1->getPosition().y - mass2->getPosition().y)) - damping * fabs((mass1->getVelocity().y - mass2->getVelocity().y));
 
   return F;
 
@@ -141,14 +154,14 @@ std::ostream& operator << (std::ostream& os, const Spring& s)
 // class SpringMass : public Simulation
 /* ---------------------------------------------------------------- */
 
-SpringMass::SpringMass(Mass * mass1, Mass * mass2, Spring * spring double gravity)
+SpringMass::SpringMass(Mass * mass1, Mass * mass2, Spring * spring, double gravity)
 : mass1(mass1), mass2(mass2), spring(spring), gravity(gravity)
 { }
 
 void SpringMass::display()
 {
 
-/* INCOMPLETE: TYPE YOUR CODE HERE */
+std::cout<<mass1->getPosition().x<<" "<<mass1->getPosition().y<<" "<<mass2->getPosition().x<<" "<<mass2->getPosition().y<<" "<<std::endl ;
 
 }
 
@@ -164,8 +177,12 @@ double SpringMass::getEnergy() const
 void SpringMass::step(double dt)
 {
   Vector2 g(0,-gravity) ;
-
-/* INCOMPLETE: TYPE YOUR CODE HERE */
+  mass1->setForce(g);
+  mass2->setForce(g);
+  mass1->addForce(spring->getForce());
+  mass2->addForce(spring->getForce());
+  mass1->step(dt);
+  mass2->step(dt);
 
 }
 
