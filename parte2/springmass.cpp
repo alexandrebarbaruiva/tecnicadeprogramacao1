@@ -6,6 +6,7 @@
 #include "springmass.h"
 
 #include <iostream>
+#include <cmath>
 
 /* ---------------------------------------------------------------- */
 // class Mass
@@ -104,10 +105,11 @@ Mass * Spring::getMass2() const
 Vector2 Spring::getForce() const
 {
   Vector2 F ;
+  F.x = - stiffness * abs((mass1.getPosition().x - mass2.getPosition().x)) - damping * abs((mass1.getVelocity().x - mass2.getVelocity().x));
+  F.y = - stiffness * abs((mass1.getPosition().y - mass2.getPosition().y)) - damping * abs((mass1.getVelocity().y - mass2.getVelocity().y));
 
-/* INCOMPLETE: TYPE YOUR CODE HERE */
+  return F;
 
-  return F ;
 }
 
 double Spring::getLength() const
@@ -139,8 +141,8 @@ std::ostream& operator << (std::ostream& os, const Spring& s)
 // class SpringMass : public Simulation
 /* ---------------------------------------------------------------- */
 
-SpringMass::SpringMass(double gravity)
-: gravity(gravity)
+SpringMass::SpringMass(Mass * mass1, Mass * mass2, Spring * spring double gravity)
+: mass1(mass1), mass2(mass2), spring(spring), gravity(gravity)
 { }
 
 void SpringMass::display()
