@@ -57,18 +57,29 @@ double Mass::getMass() const
 
 double Mass::getEnergy(double gravity) const
 {
-  double energy = 0 ;
-
-/* INCOMPLETE: TYPE YOUR CODE HERE */
+  double energy =  (getMass()*((getVelocity().y)*(getVelocity().y))/2)
+                      + (getPosition().x * gravity * getMass());
 
   return energy ;
 }
 
 void Mass::step(double dt)
 {
+  Vector2 newPosition;
+  newPosition.x = getPosition().x + (getVelocity().x * dt);
+  newPosition.y = getPosition().y + (getVelocity().y * dt) - (0.5 * getForce().y/getMass() * dt * dt);
 
-/* INCOMPLETE: TYPE YOUR CODE HERE */
+  if (xmin + getRadius() <= newPosition.x && newPosition.x <= xmax - getRadius()) {
+    position.x = newPosition.x;
+  } else {
+    position.x = -newPosition.x;
+  }
 
+  if (ymin + getRadius() <= newPosition.y && newPosition.y <= ymax - getRadius()) {
+    position.y = newPosition.y;
+  } else {
+    position.y = -newPosition.y;
+  }
 }
 
 /* ---------------------------------------------------------------- */
@@ -158,5 +169,3 @@ void SpringMass::step(double dt)
 
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
-
-
