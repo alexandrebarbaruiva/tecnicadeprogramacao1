@@ -1,3 +1,5 @@
+Para a parte 2, acesse a pasta parte2.
+
 # Projeto Bouncing oriented Ball
 
 Este projeto tem por finalidade implementar conhecimentos adquiridos nas aulas de Técnicas de Programação 1 por meio da simulação da queda de uma bola dentro de uma caixa 2D.
