@@ -54,7 +54,7 @@ public:
   double getMass() const ;
   double getRadius() const ;
   double getEnergy(double gravity) const ;
-  void step(double dt, double gravity) ;
+  void step(double dt) ;
 
 protected:
   Vector2 position ;

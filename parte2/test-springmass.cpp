@@ -13,7 +13,7 @@ int main(int argc, char** argv)
   const double naturalLength = 1 ;
   const double stiffness = 0.95 ;
 
-  Mass m1(Vector2(-.5,0), Vector2(), mass, radius) ;
+  Mass m1(Vector2(-.5,0.5), Vector2(), mass, radius) ;
   Mass m2(Vector2(+.5,0), Vector2(), mass, radius) ;
 
   Spring spring(& m1, & m2, naturalLength, stiffness) ;
