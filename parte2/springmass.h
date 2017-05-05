@@ -35,7 +35,6 @@ inline Vector2 operator- (Vector2 a, Vector2 b) { return Vector2(a.x-b.x, a.y-b.
 inline Vector2 operator* (double a, Vector2 b)  { return Vector2(a*b.x, a*b.y) ; }
 inline Vector2 operator* (Vector2 a, double b)  { return Vector2(a.x*b, a.y*b) ; }
 inline Vector2 operator/ (Vector2 a, double b)  { return Vector2(a.x/b, a.y/b) ; }
-inline Vector2 operator/ (double b, Vector2 a)  { return Vector2(b/a.x, b/a.y) ; }
 inline double dot(Vector2 a, Vector2 b) { return a.x*b.x + a.y*b.y ; }
 
 /* ---------------------------------------------------------------- */
@@ -55,7 +54,7 @@ public:
   double getMass() const ;
   double getRadius() const ;
   double getEnergy(double gravity) const ;
-  void step(double dt) ;
+  void step(double dt, double gravity) ;
 
 protected:
   Vector2 position ;
@@ -100,7 +99,7 @@ protected:
 class SpringMass : public Simulation
 {
 public:
-  SpringMass(Mass * mass1, Mass * mass2, Spring * spring,double gravity = MOON_GRAVITY) ;
+  SpringMass(Mass * mass1, Mass * mass2, Spring * spring,double gravity = EARTH_GRAVITY) ;
   Mass * getMass1() const ;
   Mass * getMass2() const ;
   Spring * getSpring(Mass mass1, Mass mass2) const ;

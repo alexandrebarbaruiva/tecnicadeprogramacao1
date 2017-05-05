@@ -65,34 +65,32 @@ double Mass::getEnergy(double gravity) const
   return energy ;
 }
 
-void Mass::step(double dt)
+void Mass::step(double dt, double gravity)
 {
   Vector2 acceleration;
-  acceleration.x = 0;
-  acceleration.y = getForce().y/getMass();
+  acceleration.x = getForce().x/getMass();
+  acceleration.y = gravity;
 
   Vector2 newPosition;
-  newPosition.x = getPosition().x + (getVelocity().x * dt);
+  newPosition.x = getPosition().x + (getVelocity().x * dt) - (0.5 * acceleration.x * dt * dt);
   newPosition.y = getPosition().y + (getVelocity().y * dt) - (0.5 * acceleration.y * dt * dt);
 
   Vector2 newVelocity;
-  newVelocity.x = getVelocity().x;
-  newVelocity.y = getVelocity().y;
+  newVelocity.x = getVelocity().x + acceleration.x * dt;
+  newVelocity.y = getVelocity().y + acceleration.y * dt;
 
   if (xmin + getRadius() <= newPosition.x && newPosition.x <= xmax - getRadius()) {
     position.x = newPosition.x;
     velocity.x = newVelocity.x;
   } else {
-    position.x = -newPosition.x;
-    velocity.x = -newVelocity.x;
+    velocity.x = -velocity.x;
   }
 
   if (ymin + getRadius() <= newPosition.y && newPosition.y <= ymax - getRadius()) {
     position.y = newPosition.y;
     velocity.y = newVelocity.y;
   } else {
-    position.y = -newPosition.y;
-    velocity.y = -newVelocity.y;
+    velocity.y = -velocity.y;
   }
 }
 
@@ -167,23 +165,22 @@ std::cout<<mass1->getPosition().x<<" "<<mass1->getPosition().y<<" "<<mass2->getP
 
 double SpringMass::getEnergy() const
 {
-  double energy = 0 ;
-
-/* INCOMPLETE: TYPE YOUR CODE HERE */
+  double energy = mass1->getEnergy(gravity) + mass2->getEnergy(gravity) + spring->getEnergy() ;
 
   return energy ;
 }
 
 void SpringMass::step(double dt)
 {
-  Vector2 g(0,-gravity) ;
+  Vector2 g(0,-gravity);
   mass1->setForce(g);
   mass2->setForce(g);
   mass1->addForce(spring->getForce());
   mass2->addForce(spring->getForce());
-  mass1->step(dt);
-  mass2->step(dt);
+  mass1->step(dt, gravity);
+  mass2->step(dt, gravity);
 
+  //std::cout<<mass1->getForce().x<<" "<<mass1->getForce().y<<" "<<mass2->getForce().x<<" "<<mass2->getForce().y<<" "<<spring->getForce().x<<" "<<spring->getForce().y<<std::endl ;
 }
 
 
