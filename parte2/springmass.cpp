@@ -179,7 +179,7 @@ void SpringMass::step(double dt)
   mass1->setForce(g);
   mass2->setForce(g);
   mass1->addForce(spring->getForce());
-  mass2->addForce(spring->getForce());
+  mass2->addForce(-1.0*spring->getForce());
   mass1->step(dt);
   mass2->step(dt);
 
