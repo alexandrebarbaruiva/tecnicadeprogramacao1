@@ -99,7 +99,7 @@ protected:
 class SpringMass : public Simulation
 {
 public:
-  SpringMass(Mass * mass1, Mass * mass2, Spring * spring,double gravity = EARTH_GRAVITY) ;
+  SpringMass(Mass * mass1, Mass * mass2, Spring * spring,double gravity = MOON_GRAVITY) ;
   Mass * getMass1() const ;
   Mass * getMass2() const ;
   Spring * getSpring(Mass mass1, Mass mass2) const ;

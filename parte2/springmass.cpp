@@ -68,8 +68,10 @@ double Mass::getEnergy(double gravity) const
 void Mass::step(double dt, double gravity)
 {
   Vector2 acceleration;
-  acceleration.x = getForce().x/getMass();
-  acceleration.y = gravity;
+  acceleration.x = (getForce().x)/getMass();
+  acceleration.y = (getForce().y)/getMass();
+  //std::cout<<gravity<<' '<<getForce().x/getMass()<<std::endl ;
+
 
   Vector2 newPosition;
   newPosition.x = getPosition().x + (getVelocity().x * dt) - (0.5 * acceleration.x * dt * dt);
@@ -116,7 +118,9 @@ Mass * Spring::getMass2() const
 Vector2 Spring::getForce() const
 {
   Vector2 F ;
-  F.x = - stiffness * fabs((mass1->getPosition().x - mass2->getPosition().x)) - damping * fabs((mass1->getVelocity().x - mass2->getVelocity().x));
+  double unitVector = getLength()/naturalLength;
+  double velAlongamento = ;
+  F.x = - stiffness * fabs(getLength() - naturalLength) - damping * fabs((mass1->getVelocity().x - mass2->getVelocity().x));
   F.y = - stiffness * fabs((mass1->getPosition().y - mass2->getPosition().y)) - damping * fabs((mass1->getVelocity().y - mass2->getVelocity().y));
 
   return F;
