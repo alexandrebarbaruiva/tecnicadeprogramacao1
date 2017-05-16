@@ -62,7 +62,7 @@ void Ball::display()
 
 void Ball::run(Simulation & s, double dt)
 {
-  for (int i = 0 ; i < 100000000000 ; ++i)
+  for (int i = 0 ; i < 1000 ; ++i)
   {
     s.step(dt);
     s.display();
