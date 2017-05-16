@@ -14,19 +14,33 @@
 class SpringMassDrawable : public SpringMass, public Drawable
 /* ---------------------------------------------------------------- */
 {
+private:
+  Figure figure ;
 
-/* INCOMPLETE: TYPE YOUR CODE HERE */
+public:
+  SpringMassDrawable()
+  : figure("SpringMass")
+  {
+    figure.addDrawable(this) ;
+  }
+
+  void draw() {
+    figure.drawLine(x1,y1,x2,y2,thick) ;
+    figure.drawCircle(x1,y1,r) ;
+    figure.drawCircle(x2,y2,r) ;
+  }
+
+  void display() {
+    figure.update() ;
+  }
 
 } ;
 
 int main(int argc, char** argv)
 {
   glutInit(&argc,argv) ;
-
+  const double dt = 1/120.0 ;
   SpringMassDrawable springmass ;
-
-
-/* INCOMPLETE: TYPE YOUR CODE HERE */
-
-  run(&springmass, 1/120.0) ;
+  run(&springmass, dt) ;
+  return 0 ;
 }
