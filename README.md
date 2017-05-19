@@ -179,7 +179,7 @@ cd /SeuDiretório/SuaPasta/tecnicadeprogramacao1
 Then compile the test-springmass.cpp, springmass.cpp and springmass.h codes.
 
 ```
-g++ test-springmass.cpp, springmass.cpp e springmass.h
+g++ test-springmass.cpp springmass.cpp  springmass.h
 ```
 Then run the a.out file
 
